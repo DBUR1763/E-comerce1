@@ -1,6 +1,8 @@
 <?php
 
+use App\Models\Productt;
 use Illuminate\Support\Facades\Route;
+use App\Http\controllers\ProducttController;
 
 /*
 |--------------------------------------------------------------------------
@@ -16,6 +18,18 @@ use Illuminate\Support\Facades\Route;
 Route::get('/', function () {
     return view('welcome');
 });
-use app\http\controllers\productcontroller;
-Route::get('/product/.register',[productcontroller,'register']);
-Route::post('product.register',[productcontroller,'store']);
+
+Route::get('/Productt/edit/{id}', [ProducttController::class, 'edit']);
+Route::post('/Productt/update',[ProducttController::class,'update'])->name('Productt/update');
+Route::get('/Productt/delete/{id}', [ProducttController::class, 'delete']);
+Route::get('/Productt/search/{id}', [ProducttController::class, 'search'])->name('Productt/search');
+Route::get('/Productt/register',[ProducttController::class,'register'])->name('Productt/register');
+Route::post('/Productt/register',[ProducttController::class,'store']);
+Route::get('/productt/list', [ProducttController::class, 'get_all'])->name('productt/list');
+
+Auth::routes();
+
+Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
+Auth::routes();
+
+Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
