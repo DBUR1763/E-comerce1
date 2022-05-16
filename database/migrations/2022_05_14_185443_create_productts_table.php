@@ -20,6 +20,11 @@ class CreateProducttsTable extends Migration
             $table->string('unit')->nullable();
             $table->double('price',82)->nullable();
             $table->integer('quantity')->nullable();
+            $table->unsignedBigInteger('Catagory_id');
+            $table->foreign('Catagory_id')
+              ->reference('id')
+              ->on('Catagory')
+              ->onDelete('cascade');
         });
     }
 

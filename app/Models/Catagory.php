@@ -10,4 +10,9 @@ class Catagory extends Model
     use HasFactory;
     protected $fillable = [
         'name'];
+        public function productt()
+        {
+           return $this->hasmany(productt::class);
+
+        }
 }
